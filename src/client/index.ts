@@ -23,7 +23,7 @@ on('playerSpawned', async () => {
 
 on("gameEventTriggered", (name: string, args: any) => {
     if (name == "CEventNetworkEntityDamage") {
-        if (args[1] == PlayerPedId() && IsEntityDead(args[0])) {
+        if (args[1] == PlayerPedId() && IsEntityDead(args[0]) && IsPedAPlayer(args[1]) && IsPedAPlayer(args[0])) {
             const Game: Game | undefined = GameManager.get(PlayerId());
 
             if (!Game) return;
